@@ -41,16 +41,12 @@ button {
   transition: 0.2s ease;
 }
 
-/* HEADINGS */
-
 h1,
 h2,
 h3,
 .system-label {
   font-family: "Orbitron", sans-serif;
 }
-
-/* SYSTEM ACTIVATED LABEL */
 
 .system-label {
   display: block;
@@ -69,8 +65,6 @@ h3,
     0 0 12px rgba(88, 199, 255, 0.6),
     0 0 22px rgba(88, 199, 255, 0.3);
 }
-
-/* LOGIN PAGE */
 
 .login-page {
   min-height: 100vh;
@@ -102,8 +96,6 @@ h3,
     0 0 70px rgba(111, 73, 255, 0.12);
 }
 
-/* DARK OVERLAY OVER THE BACKGROUND IMAGE */
-
 .login-card::before {
   content: "";
   position: absolute;
@@ -113,8 +105,6 @@ h3,
   pointer-events: none;
 }
 
-/* CENTER THE LOGIN LABEL */
-
 .login-card > .system-label {
   position: relative;
   display: block;
@@ -122,8 +112,6 @@ h3,
   margin: 0 auto 12px;
   text-align: center;
 }
-
-/* LOGO */
 
 .logo {
   width: 58px;
@@ -143,8 +131,6 @@ h3,
     inset 0 0 12px rgba(88, 199, 255, 0.15);
   transform: rotate(45deg);
 }
-
-/* LOGIN TITLE */
 
 .login-card h1 {
   margin: 14px 0;
@@ -170,8 +156,6 @@ h3,
   margin: 0 0 30px;
   text-align: center;
 }
-
-/* LOGIN FORM */
 
 .login-card form,
 .note-form {
@@ -212,8 +196,6 @@ textarea::placeholder {
   margin-bottom: 10px;
 }
 
-/* SYSTEM BUTTON */
-
 .login-card form button,
 .note-form button {
   min-height: 46px;
@@ -241,16 +223,12 @@ textarea::placeholder {
   transform: translateY(-1px);
 }
 
-/* VALIDATION MESSAGE */
-
 .error-message {
   margin: 4px 0;
   color: #ff9aa8;
   font-size: 13px;
   text-align: center;
 }
-
-/* FOOTER */
 
 .footer-text {
   color: #8494b8;
@@ -265,14 +243,13 @@ textarea::placeholder {
   margin: 26px 0 0;
 }
 
-/* NOTES DASHBOARD */
-
 .notes-page {
   width: 100%;
   max-width: 1000px;
   min-height: 100vh;
   margin: 0 auto;
   padding: 48px 24px;
+  animation: questLogEnter 0.8s ease-out both;
 }
 
 .notes-header {
@@ -289,6 +266,7 @@ textarea::placeholder {
   font-size: clamp(28px, 6vw, 40px);
   letter-spacing: 2px;
   text-shadow: 0 0 18px rgba(88, 199, 255, 0.35);
+  animation: questTitleGlow 2s ease-in-out infinite alternate;
 }
 
 .notes-header .system-label {
@@ -298,8 +276,6 @@ textarea::placeholder {
 .notes-header .subtitle {
   margin-bottom: 0;
 }
-
-/* LOGOUT BUTTON */
 
 .logout-button {
   padding: 10px 18px;
@@ -313,14 +289,13 @@ textarea::placeholder {
   background: rgba(110, 25, 55, 0.65);
 }
 
-/* QUEST PANEL */
-
 .quest-panel {
   padding: 28px;
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 10px;
   box-shadow: 0 0 35px rgba(88, 199, 255, 0.08);
+  animation: questPanelEnter 0.7s ease-out 0.1s both;
 }
 
 .panel-heading {
@@ -352,8 +327,6 @@ textarea::placeholder {
   white-space: nowrap;
 }
 
-/* ADD QUEST FORM */
-
 .note-form {
   margin-top: 24px;
 }
@@ -363,8 +336,6 @@ textarea {
   resize: vertical;
   line-height: 1.6;
 }
-
-/* QUEST LIST */
 
 .notes-list {
   display: flex;
@@ -404,6 +375,7 @@ textarea {
   background: rgba(18, 29, 59, 0.65);
   border: 1px solid rgba(88, 199, 255, 0.17);
   border-radius: 6px;
+  animation: questItemEnter 0.45s ease-out both;
 }
 
 .note-number {
@@ -423,8 +395,6 @@ textarea {
   white-space: pre-wrap;
 }
 
-/* DELETE BUTTON */
-
 .delete-button {
   padding: 7px 10px;
   color: #ffabb9;
@@ -442,7 +412,72 @@ textarea {
   margin-top: 30px;
 }
 
-/* MOBILE RESPONSIVE */
+@keyframes questLogEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes questTitleGlow {
+  from {
+    text-shadow: 0 0 5px rgba(88, 199, 255, 0.3);
+  }
+  to {
+    text-shadow:
+      0 0 12px rgba(88, 199, 255, 0.9),
+      0 0 28px rgba(88, 199, 255, 0.5);
+  }
+}
+
+@keyframes questPanelEnter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes questItemEnter {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes questMarkerPulse {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.8);
+    text-shadow: 0 0 12px #58c7ff;
+  }
+}
+
+.note-item:hover {
+  border-color: rgba(88, 199, 255, 0.8);
+  box-shadow: 0 0 18px rgba(88, 199, 255, 0.18);
+}
+
+.quest-marker {
+  animation: questMarkerPulse 2s ease-in-out infinite;
+}
+
+button:active {
+  transform: scale(0.97);
+}
 
 @media (max-width: 600px) {
   .login-page {
@@ -490,97 +525,4 @@ textarea {
   .delete-button {
     margin-left: 35px;
   }
-}
-
-
-/* ===== QUESTLOG ANIMATIONS ===== */
-
-/* Main page enters smoothly */
-.notes-page {
-  animation: questLogEnter 0.8s ease-out both;
-}
-
-@keyframes questLogEnter {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Title glow */
-.notes-header h1 {
-  animation: questTitleGlow 2s ease-in-out infinite alternate;
-}
-
-@keyframes questTitleGlow {
-  from {
-    text-shadow: 0 0 5px rgba(88, 199, 255, 0.3);
-  }
-  to {
-    text-shadow:
-      0 0 12px rgba(88, 199, 255, 0.9),
-      0 0 28px rgba(88, 199, 255, 0.5);
-  }
-}
-
-/* Quest panel enters */
-.quest-panel {
-  animation: questPanelEnter 0.7s ease-out 0.1s both;
-}
-
-@keyframes questPanelEnter {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Each note slides in */
-.note-item {
-  animation: questItemEnter 0.45s ease-out both;
-}
-
-@keyframes questItemEnter {
-  from {
-    opacity: 0;
-    transform: translateX(-18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Blue glow when hovering over a quest */
-.note-item:hover {
-  border-color: rgba(88, 199, 255, 0.8);
-  box-shadow: 0 0 18px rgba(88, 199, 255, 0.18);
-}
-
-/* Quest marker pulse */
-.quest-marker {
-  animation: questMarkerPulse 2s ease-in-out infinite;
-}
-
-@keyframes questMarkerPulse {
-  0%, 100% {
-    filter: brightness(1);
-  }
-  50% {
-    filter: brightness(1.8);
-    text-shadow: 0 0 12px #58c7ff;
-  }
-}
-
-/* Button press effect */
-button:active {
-  transform: scale(0.97);
 }
