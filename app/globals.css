@@ -38,16 +38,10 @@ textarea {
 
 button {
   cursor: pointer;
-  transition:
-    background 0.25s ease,
-    box-shadow 0.25s ease,
-    transform 0.2s ease,
-    filter 0.25s ease;
+  transition: 0.2s ease;
 }
 
-button:active {
-  transform: scale(0.97);
-}
+/* HEADINGS */
 
 h1,
 h2,
@@ -56,13 +50,14 @@ h3,
   font-family: "Orbitron", sans-serif;
 }
 
-/* SYSTEM LABEL */
+/* SYSTEM ACTIVATED LABEL */
 
 .system-label {
   display: block;
   width: 100%;
   margin: 0 auto 12px;
   color: var(--blue-bright);
+  font-family: "Orbitron", sans-serif;
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 4px;
@@ -89,8 +84,8 @@ h3,
 
 .login-card {
   position: relative;
-  isolation: isolate;
   overflow: hidden;
+  isolation: isolate;
   width: 100%;
   max-width: 430px;
   padding: 40px 32px;
@@ -105,8 +100,9 @@ h3,
   box-shadow:
     0 0 30px rgba(88, 199, 255, 0.18),
     0 0 70px rgba(111, 73, 255, 0.12);
-  animation: loginActivate 0.8s ease-out both;
 }
+
+/* DARK OVERLAY OVER THE BACKGROUND IMAGE */
 
 .login-card::before {
   content: "";
@@ -117,8 +113,14 @@ h3,
   pointer-events: none;
 }
 
-.login-card > * {
+/* CENTER THE LOGIN LABEL */
+
+.login-card > .system-label {
   position: relative;
+  display: block;
+  width: 100%;
+  margin: 0 auto 12px;
+  text-align: center;
 }
 
 /* LOGO */
@@ -169,12 +171,7 @@ h3,
   text-align: center;
 }
 
-.login-card > .system-label {
-  margin: 0 auto 12px;
-  text-align: center;
-}
-
-/* FORMS */
+/* LOGIN FORM */
 
 .login-card form,
 .note-form {
@@ -215,13 +212,7 @@ textarea::placeholder {
   margin-bottom: 10px;
 }
 
-textarea {
-  min-height: 100px;
-  resize: vertical;
-  line-height: 1.6;
-}
-
-/* SYSTEM BUTTONS */
+/* SYSTEM BUTTON */
 
 .login-card form button,
 .note-form button {
@@ -250,26 +241,13 @@ textarea {
   transform: translateY(-1px);
 }
 
-/* LOGIN ERROR MESSAGE */
+/* VALIDATION MESSAGE */
 
 .error-message {
   margin: 4px 0;
   color: #ff9aa8;
   font-size: 13px;
-  line-height: 1.6;
   text-align: center;
-  animation: errorAppear 0.25s ease-out both;
-}
-
-@keyframes errorAppear {
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* FOOTER */
@@ -287,7 +265,7 @@ textarea {
   margin: 26px 0 0;
 }
 
-/* NOTES PAGE */
+/* NOTES DASHBOARD */
 
 .notes-page {
   width: 100%;
@@ -295,18 +273,6 @@ textarea {
   min-height: 100vh;
   margin: 0 auto;
   padding: 48px 24px;
-  animation: systemAppear 0.8s ease-out both;
-}
-
-@keyframes systemAppear {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .notes-header {
@@ -322,22 +288,10 @@ textarea {
   font-family: "Orbitron", sans-serif;
   font-size: clamp(28px, 6vw, 40px);
   letter-spacing: 2px;
-  animation: titleGlow 2s ease-in-out infinite alternate;
+  text-shadow: 0 0 18px rgba(88, 199, 255, 0.35);
 }
 
-@keyframes titleGlow {
-  from {
-    text-shadow: 0 0 6px rgba(88, 199, 255, 0.3);
-  }
-  to {
-    text-shadow:
-      0 0 12px rgba(88, 199, 255, 0.9),
-      0 0 28px rgba(88, 199, 255, 0.45);
-  }
-}
-
-.notes-header .system-label,
-.panel-heading .system-label {
+.notes-header .system-label {
   text-align: left;
 }
 
@@ -357,8 +311,6 @@ textarea {
 
 .logout-button:hover {
   background: rgba(110, 25, 55, 0.65);
-  box-shadow: 0 0 15px rgba(255, 123, 157, 0.15);
-  transform: translateY(-2px);
 }
 
 /* QUEST PANEL */
@@ -369,18 +321,6 @@ textarea {
   border: 1px solid var(--border);
   border-radius: 10px;
   box-shadow: 0 0 35px rgba(88, 199, 255, 0.08);
-  animation: panelAppear 0.7s ease-out 0.1s both;
-}
-
-@keyframes panelAppear {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .panel-heading {
@@ -398,6 +338,10 @@ textarea {
   font-size: 21px;
 }
 
+.panel-heading .system-label {
+  text-align: left;
+}
+
 .quest-count {
   padding: 8px 10px;
   color: var(--blue-bright);
@@ -412,6 +356,12 @@ textarea {
 
 .note-form {
   margin-top: 24px;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+  line-height: 1.6;
 }
 
 /* QUEST LIST */
@@ -446,191 +396,37 @@ textarea {
   line-height: 1.7;
 }
 
-/* QUEST CARDS */
-
-.note-item.quest-line {
-  position: relative;
-  isolation: isolate;
+.note-item {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-left: 0;
-  padding: 20px 16px;
-  overflow: hidden;
-  background: linear-gradient(
-    110deg,
-    rgba(15, 35, 75, 0.96),
-    rgba(8, 15, 36, 0.96)
-  );
-  border: 1px solid rgba(77, 183, 255, 0.45);
-  border-left: 3px solid var(--blue);
-  border-radius: 3px;
-  box-shadow:
-    inset 0 0 18px rgba(45, 127, 255, 0.06),
-    0 0 12px rgba(45, 127, 255, 0.05);
-  animation: questAppear 0.45s ease-out both;
-  transition:
-    border-color 0.25s ease,
-    box-shadow 0.25s ease,
-    transform 0.25s ease;
+  gap: 15px;
+  padding: 15px;
+  background: rgba(18, 29, 59, 0.65);
+  border: 1px solid rgba(88, 199, 255, 0.17);
+  border-radius: 6px;
 }
 
-.note-item.quest-line::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: -80%;
-  width: 45%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(88, 199, 255, 0.16),
-    transparent
-  );
-  transform: skewX(-18deg);
-  pointer-events: none;
-}
-
-.note-item.quest-line:hover::before {
-  animation: energySweep 0.8s ease-out;
-}
-
-.note-item.quest-line:hover {
-  border-color: var(--blue);
-  box-shadow:
-    inset 0 0 22px rgba(45, 127, 255, 0.1),
-    0 0 18px rgba(45, 127, 255, 0.2);
-  transform: translateX(3px);
-}
-
-@keyframes questAppear {
-  from {
-    opacity: 0;
-    transform: translateX(-14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes energySweep {
-  from {
-    left: -80%;
-  }
-  to {
-    left: 140%;
-  }
-}
-
-.quest-index {
-  align-self: flex-start;
-  min-width: 68px;
-  padding-top: 4px;
-  color: #75cfff;
+.note-number {
+  color: var(--blue);
   font-family: "Orbitron", sans-serif;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 1px;
+  font-size: 12px;
 }
 
-.quest-marker {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  color: #7cdbff;
-  background: rgba(42, 143, 255, 0.1);
-  border: 1px solid var(--blue);
-  clip-path: polygon(
-    25% 0,
-    75% 0,
-    100% 25%,
-    100% 75%,
-    75% 100%,
-    25% 100%,
-    0 75%,
-    0 25%
-  );
-  font-family: "Orbitron", sans-serif;
-  font-size: 17px;
-  font-weight: 800;
-  text-shadow: 0 0 8px rgba(88, 199, 255, 0.7);
-  animation: markerPulse 2.5s ease-in-out infinite;
-}
-
-@keyframes markerPulse {
-  0%,
-  100% {
-    filter: brightness(1);
-    box-shadow: 0 0 0 rgba(88, 199, 255, 0);
-  }
-  50% {
-    filter: brightness(1.5);
-    box-shadow: 0 0 12px rgba(88, 199, 255, 0.3);
-  }
-}
-
-.quest-content {
+.note-item p {
   flex: 1;
   min-width: 0;
-}
-
-.quest-objective {
-  margin: 0 0 9px;
-  color: #eef7ff;
+  margin: 0;
+  color: #e3eaff;
   font-size: 14px;
   line-height: 1.7;
   overflow-wrap: anywhere;
   white-space: pre-wrap;
 }
 
-.quest-status {
-  display: inline-block;
-  color: var(--blue);
-  font-family: "Orbitron", sans-serif;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-}
-
-/* QUEST ACTION BUTTONS */
-
-.quest-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.complete-button {
-  padding: 8px 10px;
-  color: #75d5ff;
-  background: rgba(36, 114, 195, 0.12);
-  border: 1px solid rgba(88, 199, 255, 0.55);
-  border-radius: 2px;
-  font-family: "Orbitron", sans-serif;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.complete-button:hover {
-  color: #07111e;
-  background: var(--blue);
-  box-shadow: 0 0 12px rgba(88, 199, 255, 0.4);
-}
+/* DELETE BUTTON */
 
 .delete-button {
-  width: 30px;
-  height: 30px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 7px 10px;
   color: #ffabb9;
   background: transparent;
   border: 1px solid rgba(255, 123, 157, 0.4);
@@ -640,52 +436,7 @@ textarea {
 
 .delete-button:hover {
   background: rgba(255, 123, 157, 0.12);
-  box-shadow: 0 0 12px rgba(255, 123, 157, 0.15);
 }
-
-/* CLEARED QUEST */
-
-.note-item.quest-completed {
-  background: linear-gradient(
-    110deg,
-    rgba(10, 48, 47, 0.85),
-    rgba(8, 20, 34, 0.96)
-  );
-  border-color: rgba(87, 240, 180, 0.45);
-  border-left-color: #57f0b4;
-  animation: questCleared 0.55s ease-out;
-}
-
-.quest-completed .quest-marker {
-  color: #57f0b4;
-  border-color: #57f0b4;
-  background: rgba(87, 240, 180, 0.12);
-  text-shadow: 0 0 8px rgba(87, 240, 180, 0.6);
-  animation: none;
-}
-
-.quest-completed .quest-status {
-  color: #57f0b4;
-}
-
-.quest-completed .quest-objective {
-  color: #9dbfb8;
-  text-decoration: line-through;
-}
-
-@keyframes questCleared {
-  0% {
-    box-shadow: 0 0 0 rgba(87, 240, 180, 0);
-  }
-  40% {
-    box-shadow: 0 0 25px rgba(87, 240, 180, 0.35);
-  }
-  100% {
-    box-shadow: 0 0 10px rgba(87, 240, 180, 0.08);
-  }
-}
-
-/* FOOTER */
 
 .dashboard-footer {
   margin-top: 30px;
@@ -712,7 +463,6 @@ textarea {
 
   .notes-header {
     align-items: flex-start;
-    flex-direction: column;
   }
 
   .notes-header h1 {
@@ -728,44 +478,109 @@ textarea {
     flex-direction: column;
   }
 
-  .note-item.quest-line {
+  .note-item {
+    align-items: flex-start;
     flex-wrap: wrap;
-    gap: 12px;
-    padding: 15px 12px;
   }
 
-  .quest-index {
-    min-width: 55px;
-    font-size: 8px;
+  .note-item p {
+    flex-basis: calc(100% - 45px);
   }
 
-  .quest-marker {
-    width: 29px;
-    height: 29px;
-  }
-
-  .quest-content {
-    flex-basis: calc(100% - 110px);
-  }
-
-  .quest-actions {
-    margin-left: auto;
-  }
-
-  .quest-objective {
-    font-size: 13px;
+  .delete-button {
+    margin-left: 35px;
   }
 }
 
-/* ACCESSIBILITY */
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
+/* ===== QUESTLOG ANIMATIONS ===== */
+
+/* Main page enters smoothly */
+.notes-page {
+  animation: questLogEnter 0.8s ease-out both;
+}
+
+@keyframes questLogEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Title glow */
+.notes-header h1 {
+  animation: questTitleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes questTitleGlow {
+  from {
+    text-shadow: 0 0 5px rgba(88, 199, 255, 0.3);
+  }
+  to {
+    text-shadow:
+      0 0 12px rgba(88, 199, 255, 0.9),
+      0 0 28px rgba(88, 199, 255, 0.5);
+  }
+}
+
+/* Quest panel enters */
+.quest-panel {
+  animation: questPanelEnter 0.7s ease-out 0.1s both;
+}
+
+@keyframes questPanelEnter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Each note slides in */
+.note-item {
+  animation: questItemEnter 0.45s ease-out both;
+}
+
+@keyframes questItemEnter {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Blue glow when hovering over a quest */
+.note-item:hover {
+  border-color: rgba(88, 199, 255, 0.8);
+  box-shadow: 0 0 18px rgba(88, 199, 255, 0.18);
+}
+
+/* Quest marker pulse */
+.quest-marker {
+  animation: questMarkerPulse 2s ease-in-out infinite;
+}
+
+@keyframes questMarkerPulse {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.8);
+    text-shadow: 0 0 12px #58c7ff;
+  }
+}
+
+/* Button press effect */
+button:active {
+  transform: scale(0.97);
 }

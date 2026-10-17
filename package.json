@@ -1,6 +1,6 @@
 {
   "name": "note-app-project",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,12 +10,13 @@
   },
   "dependencies": {
     "next": "16.4.2",
-    "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@next/swc-win32-x64-msvc": "^16.4.2",
-    "eslint": "^9",
-    "eslint-config-next": "16.4.2"
+    "@tailwindcss/postcss": "^4.3.3",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "16.4.2",
+    "tailwindcss": "^4.3.3"
   }
 }

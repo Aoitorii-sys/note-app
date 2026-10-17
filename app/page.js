@@ -40,16 +40,13 @@ export default function Home() {
         <div className="logo">Q</div>
 
         <p className="system-label">SYSTEM ACTIVATED</p>
-
         <h1>QuestLog</h1>
-
         <p className="subtitle">
           Arise. Complete your daily quests.
         </p>
 
         <form onSubmit={handleLogin} noValidate>
           <label htmlFor="email">Email Address</label>
-
           <input
             id="email"
             type="email"
@@ -59,7 +56,6 @@ export default function Home() {
           />
 
           <label htmlFor="password">Password</label>
-
           <input
             id="password"
             type="password"
@@ -68,9 +64,7 @@ export default function Home() {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button type="submit">
-            ENTER THE SYSTEM
-          </button>
+          <button type="submit">ENTER THE SYSTEM</button>
 
           {error && (
             <p className="error-message" role="alert">
@@ -79,9 +73,7 @@ export default function Home() {
           )}
         </form>
 
-        <p className="footer-text">
-          PLAYER LOGIN SYSTEM
-        </p>
+        <p className="footer-text">PLAYER LOGIN SYSTEM</p>
       </section>
     </main>
   );
